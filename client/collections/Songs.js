@@ -9,13 +9,16 @@ var Songs = Backbone.Collection.extend({
     $.ajax({
       type: 'GET',
       url: 'https://api.parse.com/1/classes/songs/',
-      success: function(someD) {
+      success: function(someData) {
         console.log('AJAX Success');
-        console.log('inside: ', _this);
-        someD.results.forEach(function(song) {
+        someData.results.forEach(function(song) {
           _this.add(song);
         });
         _this.trigger('loaded');
+      },
+      error: function(err) {
+        _this.trigger('notFound');
+        throw new Error('AJAX Failed');
       }
     });
 

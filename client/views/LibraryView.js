@@ -6,6 +6,7 @@ var LibraryView = Backbone.View.extend({
   initialize: function() {
     this.render();
     this.collection.on('loaded', this.render, this);
+    this.collection.on('notFound', this.renderError, this);
   },
 
   render: function() {
@@ -18,6 +19,12 @@ var LibraryView = Backbone.View.extend({
         return new LibraryEntryView({model: song}).render();
       })
     );
+  },
+
+  renderError: function() {
+    console.log('renderError IS being called');
+    this.$el.children().detach();
+    this.$el.html('<th>Library</th>').append($('<tr><td>Error Loading Library</td></tr>'));
   }
 
 });

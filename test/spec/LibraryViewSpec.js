@@ -31,8 +31,8 @@ describe('LibraryView', function() {
     expect(view.$el.children().length).to.equal(2);
     expect(view.$el.children()[0].tagName).to.equal('TH');
   });
-  
-  xdescribe('when fetching song data from Parse', function() {
+
+  describe('when fetching song data from Parse', function() {
     var fakeResponse, requests, xhr;
 
     beforeEach(function() {
@@ -57,5 +57,13 @@ describe('LibraryView', function() {
       requests[0].respond(200, { 'Content-Type': 'application/json' }, fakeResponse);
       expect(view.render).to.have.been.calledTwice;
     });
+
+    it('should inform user of no song data', function() {
+      var FakeLibraryView = LibraryView.extend({ renderError: sinon.spy() });
+      view = new FakeLibraryView({ collection: new Songs() });
+      requests[0].respond(404);
+      expect(view.renderError).to.have.been.calledOnce;
+    });
+
   });
 });
