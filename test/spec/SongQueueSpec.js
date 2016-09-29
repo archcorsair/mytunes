@@ -75,4 +75,22 @@ describe('SongQueue', function() {
       SongModel.prototype.play.restore();
     });
   });
+
+  describe('when a song in the queue is clicked', function() {
+    it('it should be removed from the queue', function() {
+
+      removeSpy = sinon.spy(SongQueue.prototype, 'remove');
+      var songQueue = new SongQueue(songData1);
+      songQueue.at(0).dequeue();
+      expect(removeSpy).to.have.been.called;
+      expect(songQueue.length).to.equal(0);
+      SongQueue.prototype.remove.restore();
+
+      // sinon.spy(SongModel.prototype, 'play');
+      // var songQueue = new SongQueue(songData1);
+      // songQueue.playFirst();
+      // expect(songQueue.at(0).play).to.have.been.called;
+      // SongModel.prototype.play.restore();
+    });
+  });
 });
