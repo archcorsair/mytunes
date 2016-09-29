@@ -26,18 +26,18 @@
       $(function() {
         // set up model objects
 
-        $.ajax({
-          type: 'GET',
-          url: 'https://api.parse.com/1/classes/songs/',
-          success: function(someD) {
-            var library = new Songs(someD.results);
+        // $.ajax({
+        //   type: 'GET',
+        //   url: 'https://api.parse.com/1/classes/songs/',
+        //   success: function(someD) {
+            var library = new Songs();
             var app = new AppModel({library: library});
             // build a view for the top level of the whole app
             var appView = new AppView({model: app});
             // put the view onto the screen
             $('body').append(appView.render());
-           }
-        })
+          //  }
+        // })
 
       });
     </script>
