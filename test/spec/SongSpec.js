@@ -30,4 +30,14 @@ describe('SongModel', function() {
     model.ended();
     expect(model.trigger).to.have.been.calledWith('ended', model);
   });
+
+  it('should have an initial play count of 0', function() {
+    expect(model.get('playCount')).to.equal(0);
+  });
+
+  it('should have a play count of 2 after being played twice', function() {
+    model.enqueue();
+    model.enqueue();
+    expect(model.get('playCount')).to.equal(2);
+  });
 });

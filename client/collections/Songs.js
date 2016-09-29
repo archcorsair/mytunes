@@ -18,7 +18,7 @@ var Songs = Backbone.Collection.extend({
       },
       error: function(err) {
         _this.trigger('notFound');
-        throw new Error('AJAX Failed');
+        // throw new Error('AJAX Failed');
       }
     });
 
