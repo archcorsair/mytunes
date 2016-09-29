@@ -10,6 +10,7 @@ var Songs = Backbone.Collection.extend({
       type: 'GET',
       url: 'https://api.parse.com/1/classes/songs/',
       success: function(someData) {
+        console.log(someData);
         console.log('AJAX Success');
         someData.results.forEach(function(song) {
           _this.add(song);

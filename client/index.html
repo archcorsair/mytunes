@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  </head>
   <body>
+
+    <div class="container">
+      <div class="row">
+        <div id="app" class="col-xs-12">
+        </div>
+      </div>
+    </div>
     <!-- Scripts may be placed anywhere on a page. But FYI, they block rendering of elements
      below them until after the scripts load-->
     <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 
 
     <script src='env/config.js'></script>
@@ -22,7 +31,7 @@
     <script src="views/LibraryEntryView.js"></script>
     <script src="views/SongQueueView.js"></script>
     <script src="views/SongQueueEntryView.js"></script>
-    <script src="views/AppView.js"></script>  
+    <script src="views/AppView.js"></script>
 
     <script>
       $(function() {
@@ -32,7 +41,7 @@
         // build a view for the top level of the whole app
         var appView = new AppView({model: app});
         // put the view onto the screen
-        $('body').append(appView.render());
+        $('#app').append(appView.render());
       });
     </script>
   </body>
