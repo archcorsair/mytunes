@@ -7,7 +7,7 @@ body {
   background: linear-gradient(to left, #EECDA3, #EF629F);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.app {
+.app-wrapper {
   width: 600px;
   margin: 0 auto;
 }

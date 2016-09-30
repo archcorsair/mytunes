@@ -9,9 +9,11 @@
   <body>
     <div class="container">
       <div class="row">
-        <div id="app" class="app">
+        <div class="app-wrapper">
           <h1>myTunes</h1>
           <h5>by: HR49</h5>
+          <img id="loading" style="display: none;" src="loading.gif" />
+          <div id="app"></div>
         </div>
       </div>
     </div>
@@ -37,6 +39,8 @@
     <script src="views/SongQueueEntryView.js"></script>
     <script src="views/AppView.js"></script>
 
+    <script src="routers/appRouter.js"></script>
+
     <script>
       $(function() {
         // set up model objects
@@ -44,8 +48,11 @@
         var app = new AppModel({library: library});
         // build a view for the top level of the whole app
         var appView = new AppView({model: app});
+        // Initialize the router
+        var appRouter = new AppRouter({collection: library});
         // put the view onto the screen
         $('#app').append(appView.render());
+        Backbone.history.start();
       });
     </script>
   </body>
