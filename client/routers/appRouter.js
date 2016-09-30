@@ -1,14 +1,21 @@
 var AppRouter = Backbone.Router.extend({
   initialize: function(params) {
     this.on('route:getSong', function(title) {
-      var results = params.collection.findWhere({'title': title});
-      $('#app').hide();
-      $('#loading').show();
+      if (params.collection.length === 0) {
+        var revealApp = true;
+        $('#app').hide();
+        $('#loading').show();
+      }
       setTimeout(function() {
         console.log(params.collection.length);
-        params.collection.findWhere({'title': title}).play();
-        $('#loading').hide();
-        $('#app').show();
+        var song = params.collection.findWhere({'title': title});
+        song.play();
+        song.enqueue();
+        if (revealApp) {
+          $('#loading').hide();
+          $('#app').show();
+          revealApp = false;
+        }
       }, 1000);
     }, this);
   },
