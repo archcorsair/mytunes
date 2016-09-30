@@ -2,7 +2,7 @@
 var LibraryView = Backbone.View.extend({
 
   tagName: 'table',
-  className: 'table table-striped',
+  className: 'table table-hover',
 
   initialize: function() {
     this.render();
