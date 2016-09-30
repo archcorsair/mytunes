@@ -6,7 +6,7 @@ var PlayerView = Backbone.View.extend({
   // el: '<audio controls autoplay />',
   tagName: 'div',
   className: 'player clearfix',
-  events: {'ended': 'audioEnded'},
+
   audioEnded: function() {
     this.model.ended();
   },
@@ -20,14 +20,18 @@ var PlayerView = Backbone.View.extend({
   },
 
   render: function() {
-    // return this.$el.html(
+    var audio = $('<audio controls autoplay />')
+      .attr('src', this.model ? this.model.get('url') : '')
+      .on('ended', function () {
+        this.audioEnded();
+      }.bind(this));
     this.$el.html('');
     this.$el.append($('<div class="albumArt" />').append(`<img src="${this.model.get('artwork_url')}" />`));
     this.$el.append(
       $('<div class="details" />')
         .append($('<div class="artist" />').text(this.model.get('artist')))
         .append($('<div class="title" />').text(this.model.get('title')))
-        .append($('<audio controls autoplay />').attr('src', this.model ? this.model.get('url') : ''))
+        .append(audio)
       );
     return this.$el;
   }

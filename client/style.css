@@ -7,13 +7,11 @@ body {
   background: linear-gradient(to left, #EECDA3, #EF629F);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-.table-striped tbody tr:hover td,
-.table-striped tbody tr:hover th {
+.song-queue > tbody tr:hover {
   background-color: rgba(255, 0, 0, 0.7);
 }
-.table-hover tbody tr:hover td,
-.table-hover tbody tr:hover th {
-  background-color: rgba(255, 0, 0, 0.3);
+.song-library > tbody tr:hover {
+  background-color: rgba(0, 255, 0, 0.4);
 }
 .app-wrapper {
   width: 600px;
